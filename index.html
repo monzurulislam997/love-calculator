@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        background-image: url('bg.jpg');
+        background-size: cover;
+        text-align: center;
+        color: aliceblue;
+        margin-top: 65px;
+
+    }
+
+    input {
+        padding: 6px 45px;
+        margin-bottom: 3px;
+        border-radius: 8px;
+        border-color: aqua;
+    }
+
+    .heading {
+        font-size: 30px;
+        display: inline;
+        background-color: yellow;
+        color: black;
+        padding: 2px 7px;
+    }
+
+    p {
+        font-size: 22px;
+    }
+
+    button {
+        font-size: 20px;
+        background-color: #FFBF00;
+        border: 1px solid green;
+        padding: 2px 15px;
+        border-radius: 5px;
+
+    }
+
+    #showvalue {
+        font-size: 56px;
+        font-weight: 900;
+    }
+</style>
+
+<body>
+    <h2 class="heading"> Love Caluculator </h2>
+    <h1 id="showvalue"> </h1>
+    <h2 id="effect"></h2>
+    <p>১ম জনের নাম ঃ <br> <input type="text" id="name1"></p>
+    <p> ২য় জনের নাম ঃ <br> <input type="text" id="name2"></p>
+    <br>
+    <button onclick=numberIncrement()>চেক করো </button>
+    <br>
+    <script>
+
+        const interval = 1000;
+        const numberIncrement = () => {
+            const name1Field = document.getElementById('name1').value
+            const name2Field = document.getElementById('name2').value
+
+             if (name1Field == "") {
+                return alert(" এই দুষ্টু ১ম নাম দিতে  হবে😫")
+            }
+            else if (name2Field == "") {
+                return alert(" এই দুষ্টু  ২য় নাম ফাকা কেন?🎃")
+            }
+
+            else  if (!isNaN(name1Field) || !isNaN(name2Field) ) {
+                return alert(" এই দুষ্টু নাম  না দিলে হবে না 🤩 ")
+            }
+
+            let startValue = 0;
+            let endValue = parseInt(Math.random() * 100)
+
+            if (endValue) {
+                let duration = Math.floor(interval / endValue);
+
+                const counter = setInterval(function () {
+                    startValue += 1;
+                    if (endValue < 50) {
+                        document.getElementById('showvalue').innerText = startValue + " %";
+                        document.getElementById('effect').innerText = name1Field + " এবং " + name2Field + " ," + "আপনাদের জম্বে না😥";
+                    }
+                    else if (endValue < 70) {
+                        document.getElementById('showvalue').innerText = startValue + " %";
+                        document.getElementById('effect').innerText = name1Field + " এবং" + name2Field + " ," + " আপনাদের  মোটামুটি, তবে চালিয়ে যান😉";
+                    }
+                    else if (endValue > 70) {
+                        document.getElementById('showvalue').innerText = startValue + " %";
+                        document.getElementById('effect').innerText = name1Field + " এবং " + name2Field + " ," + " আপনাদের  এত পিরিত কেমনে কি!!😂🧡 ";
+                    }
+
+                    if (startValue == endValue) {
+                        clearInterval(counter)
+                    }
+                }, duration)
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>
+
+
